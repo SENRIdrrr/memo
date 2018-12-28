@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang ="ja">
+  <head>
+    <meta charset ="UTF-8">
+    <title>ランダム英単語</title>
+    <style type="text/css">
+    body{
+      background:#F2F2F2;
+    }
+    #wrapper{
+      width:600px;
+      height:600px;
+      margin:auto;
+    }
+    #header{
+      width:600px;
+      height:100px;
+    }
+    .title{
+      text-align:center;
+      font-size:40px;font-weight:bold;
+      padding-right:120px;padding-left:100px;
+      float:left;
+    }#body{
+      width:600px;
+      height:400px;
+      background:white;
+    }#english{
+      padding:130px 150px;
+      font-size:70px;
+    }#btn{
+      width:80px;height:50px;
+      float:left;
+      background:skyblue;
+      color:white;
+      border-radius:5px 5px;
+      box-shadow:3px  2px #D3DEFE;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <div class="title">ランダム英単語</div>
+        <div id="btn"></div>
+      </div>
+      <div id="body">
+        <div id ="english"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      (function(){
+        'use strict';
+
+
+          //日本語->英語の時
+          const tangos =[{question:'hello',answer:'こん'},{question:'report',answer:'報告'},
+          {question:'protected',answer:'守る'}];
+          const btn =document.getElementById('btn')
+          const element=document.getElementById('english');
+          var currentQuestion=0;
+
+          questionMode(){
+            switch (mode) {
+              case expression:
+
+                break;
+
+
+            }
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+          function render(str){
+            element.innerText=str;
+          }
+          function questionMode(){
+            var mode=true;
+            if(engQuestion()&&engAnswer()){
+              mode=false
+                btn.addEventListener('click',jpQuestion);
+            }else{
+              mode=false
+            btn.addEventListener('click',engQuestion);
+            }
+
+          }
+          function jpQuestion(){
+            currentQuestion = Math.floor(Math.random() * tangos.length);
+            render(tangos[currentQuestion]['answer']);
+            jpQnA();
+          }
+          function jpAnswer(){
+            render(tangos[currentQuestion]['question']);
+            tangos.splice(currentQuestion,1);
+            jpQnA();
+          }
+          function jpQnA(){
+            var answer=true;
+            if(answer){
+              answer=false;
+              element.addEventListener('click',jpAnswer);
+            }else{
+              answer =true
+              element.addEventListener('click',jpQuestion)
+
+            }
+          }
+          function engQuestion(){//英語の問題
+            currentQuestion = Math.floor(Math.random() * tangos.length);
+            render(tangos[currentQuestion]['question']);
+            engQnA();
+          }
+          function engAnswer(){//日本語の答え
+            render(tangos[currentQuestion]['answer']);
+            tangos.splice(currentQuestion,1);
+            engQnA();
+          }
+        function engQnA(){//問題の切り替え
+          var answer=true;
+          if(answer){
+            answer=false;
+            element.addEventListener('click',engAnswer);
+          }else{
+            answer =true
+            element.addEventListener('click',engQuestion)
+
+          }
+        }
+
+        function main(){
+          engQuestion();
+        }
+        document.addEventListener('DOMContentLoaded', main)
+      }());
+      //問題を出す、問題を消す、答えを出す、モードを切り替える、
+
+
+js/react/node/express/websockets/socket.io
+
+
+http://dk001.synology.me:30000/groups/jinrou_dev/-/group_members
+
+</script>
+    </body>
+  </html>
