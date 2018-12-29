@@ -52,106 +52,48 @@
       (function(){
         'use strict';
 
+        //日本語->英語の処理
+        //英語->日本語の処理
+        //日本語の処理と英語の処理を切り替える処理
+        const element = document.getElementById(english);
+        const words = [{question:'protect',answer:'守る'},{question:'hello',answer:'こん'},{question:'read',answer:'読む'},{question:'赤',answer:'red'}];
+        let mode=true;
+       
 
-          //日本語->英語の時
-          const tangos =[{question:'hello',answer:'こん'},{question:'report',answer:'報告'},
-          {question:'protected',answer:'守る'}];
-          const btn =document.getElementById('btn')
-          const element=document.getElementById('english');
-          var currentQuestion=0;
-
-          questionMode(){
-            switch (mode) {
-              case expression:
-
-                break;
-
-
-            }
-          }
-
-
-
-
-
-
-
-
-
-
-
-
-
-          function render(str){
-            element.innerText=str;
-          }
-          function questionMode(){
-            var mode=true;
-            if(engQuestion()&&engAnswer()){
-              mode=false
-                btn.addEventListener('click',jpQuestion);
-            }else{
-              mode=false
-            btn.addEventListener('click',engQuestion);
-            }
-
-          }
-          function jpQuestion(){
-            currentQuestion = Math.floor(Math.random() * tangos.length);
-            render(tangos[currentQuestion]['answer']);
-            jpQnA();
-          }
-          function jpAnswer(){
-            render(tangos[currentQuestion]['question']);
-            tangos.splice(currentQuestion,1);
-            jpQnA();
-          }
-          function jpQnA(){
-            var answer=true;
-            if(answer){
-              answer=false;
-              element.addEventListener('click',jpAnswer);
-            }else{
-              answer =true
-              element.addEventListener('click',jpQuestion)
-
-            }
-          }
-          function engQuestion(){//英語の問題
-            currentQuestion = Math.floor(Math.random() * tangos.length);
-            render(tangos[currentQuestion]['question']);
-            engQnA();
-          }
-          function engAnswer(){//日本語の答え
-            render(tangos[currentQuestion]['answer']);
-            tangos.splice(currentQuestion,1);
-            engQnA();
-          }
-        function engQnA(){//問題の切り替え
-          var answer=true;
-          if(answer){
-            answer=false;
-            element.addEventListener('click',engAnswer);
-          }else{
-            answer =true
-            element.addEventListener('click',engQuestion)
-
-          }
+        function render(str){
+          element.innerText=str;
         }
 
-        function main(){
-          engQuestion();
+        function tooglejpeng(){
+          let btn =document.getElementById(btn);
+            if(mode){
+              mode=false;
+              btn.addEventListener('click',engQuestion);
+            }else{
+              mode=true;
+              btn.addEventListener('click',jpQuestion);
+            }
+          
         }
-        document.addEventListener('DOMContentLoaded', main)
-      }());
-      //問題を出す、問題を消す、答えを出す、モードを切り替える、
+        
+        function engQuestion(){//英語の処理
+          render(words[Math.floor(Math.random()*words.length].question);
+        }
+        function jpQuestion(){//日本語の処理
+          qurrentQuestion =Math.floor(Math.random()*words.length);
+          render(words[qurrentQuestion].answer);
+        }
+        document.addEventListener('DOMContentLoaded', engQuestion);
+      });
+      
 
 
-js/react/node/express/websockets/socket.io
+
+//js/react/node/express/websockets/socket.io
 
 
-http://dk001.synology.me:30000/groups/jinrou_dev/-/group_members
+//http://dk001.synology.me:30000/groups/jinrou_dev/-/group_members
 
-</script>
+    </script>
     </body>
   </html>
