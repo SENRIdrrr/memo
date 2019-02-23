@@ -1,0 +1,71 @@
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+main {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 61.8vw;
+  height: calc(100vh - 7rem);
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  min-width: 300px;
+  overflow: scroll; }
+  main div {
+    display: flex;
+    position: relative;
+    margin-top: 0.5rem;
+    width: 100%;
+    min-height: 2rem;
+    box-sizing: border-box; }
+    main div p {
+      max-width: 80%;
+      padding: 0.5rem; }
+    main div.other {
+      width: 100%; }
+      main div.other p {
+        background-color: #00B9F5;
+        border-radius: 6px; }
+    main div.self p {
+      position: absolute;
+      background-color: #0BDEDA;
+      border-radius: 6px;
+      right: 3px; }
+
+footer {
+  position: fixed;
+  display: flex;
+  left: 51%;
+  transform: translateX(-50%);
+  bottom: 2rem;
+  width: 61.8vw;
+  height: 3rem; }
+  footer input {
+    color: #222;
+    width: 50vw;
+    height: 100%;
+    font-size: 1rem;
+    border: none;
+    outline: 0; }
+  footer div {
+    position: relative;
+    background-color: #F57C00;
+    width: 11.8vw;
+    height: 100%;
+    cursor: pointer; }
+    footer div:hover {
+      transition: opacity 0.2s;
+      opacity: 0.8; }
+    footer div p {
+      margin: 0;
+      position: absolute;
+      color: #fff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+
+/*# sourceMappingURL=styles.css.map */

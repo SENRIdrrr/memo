@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>web socket</title>
+<link href = "css/styles.css" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+</head>
+<body>
+	<main id ="msg">
+		<div class="other">
+			<p>おはよう</p>
+		</div>
+		<div class="other">
+			<p>おはよう</p>
+		</div>
+		<div class="self">
+			<p>殺す</p>
+		</div>
+		<div class="other">
+			<p>はい＾＾</p>
+		</div>
+	</main>
+	<footer>
+		<input type="text" id = "msg_input">
+		<div onclick="publishMessage()">
+			<p>送信</p>
+		</div>
+	</footer>
+  <script>
+	let socket = io();
+	// socket.on("connected", function(name){}); ,
+	socket.on("publish", function(data){ addMessage(data.value);});
+	// socket.on("disconnect", function(){});
+
+	var msgArea = document.querySelector("#msg");
+	var myName = Math.floor(Math.random()*100) + "さん";
+	addMessage("貴方は" + myName + "として入室しました");
+	start(myName);
+
+	// チャットアプリのサーバ側に接続する
+	function start(name){
+		socket.emit("connected", name);
+	}
+
+	// メッセージの送信
+	function publishMessage(){
+		var textInput = document.querySelector("#msg_input");
+		var msg = "[" + myName + "] " + textInput.value;
+		socket.emit("publish", {value: msg});
+		textInput.value = "";
+	}
+
+	// 自身の送信時やサーバ側から受信した際のメッセージを表示する
+	function addMessage(msg){
+		var domMsg = document.createElement("div");
+		domMsg.classList.add("other");
+		let p = document.createElement("p")
+		domMsg.appendChild(p);
+		p.innerHTML = msg;
+		msgArea.appendChild(domMsg);
+	}
+  </script>
+
+</body>
+</html>
+<!-- on primary #fff -->
+<!-- on secondary #222 -->
+<!-- on background #222 -->
+<!-- on surface #222 -->
+<!-- on error #fff -->
